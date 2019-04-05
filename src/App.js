@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import styled, { ThemeProvider, ThemeConsumer } from 'styled-components';
+import styled, { ThemeProvider } from 'styled-components';
 import './App.css';
 import { AgGridReact } from 'ag-grid-react';
 
@@ -10,17 +10,13 @@ const Container = styled.div`
 class CustomRenderer extends Component {
   render() {
     return (
-      <ThemeConsumer>
-        {theme => {
-          console.log('theme', theme);
-          return (<Container theme={theme}>{this.props.value}</Container>);
-        }}
-      </ThemeConsumer>
+      <Container>{this.props.value}</Container>
     );
   }
 }
 
 const gridOptions = {
+  reactNext: true,
   frameworkComponents: {
     customRenderer: CustomRenderer,
   },
